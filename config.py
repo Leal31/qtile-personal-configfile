@@ -35,8 +35,13 @@ from pytz import timezone
 mod = "mod4"
 terminal = guess_terminal()
 browser = "firefox"
-negro = "#000000"
-verde = "#198d09"
+#negro = "#000000"
+#verde = "#198d09"
+color1 = "#083832"
+color2 = "#7dd1c6"
+color3 = "#1cb8a3"
+color4 = "#1a3b36"
+color5 = "#148273"
 
 
 keys = [
@@ -107,7 +112,7 @@ for i in groups:
 
 layouts = [
     layout.Columns(border_focus_stack=['#d75f5f', '#8f3d3d'], border_width=4),
-    layout.Max(),
+    # layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
@@ -120,7 +125,10 @@ layouts = [
         ),
     # layout.MonadWide(),
     # layout.RatioTile(),
-    # layout.Tile(),
+     layout.Tile(border_normal="gray",
+         border_focus = "green",
+         margin=0,
+     border_width=2),
     # layout.TreeTab(),
     # layout.VerticalTile(),
     # layout.Zoomy(),
@@ -140,15 +148,15 @@ screens = [
                 widget.GroupBox(
                     borderwidth = 2,
                     highlight_method = "line",
-                    highlight_color = verde,
-                    active = negro,
-                    inactive = verde,
+                    highlight_color = color5,
+                    active = color2,
+                    inactive = color3,
                     rounded = False,
                     ),
                 widget.TextBox(
                     text = "➤",
-                    background = negro,
-                    foreground = verde,
+                    background = color4,
+                    foreground = color5,
                     padding = 0,
                     fontsize = 60,
                     width = 23
@@ -156,84 +164,125 @@ screens = [
                 #widget.Prompt(foreground = verde, cursor_color=verde, background = negro),
 
                 widget.WindowName(
-                    foreground = negro,background = verde,fontsize = 9),
+                    foreground = color1,background = color5,fontsize = 9),
                 widget.TextBox(
                     text = "➤",
-                    background = verde,
-                    foreground = negro,
+                    background = color5,
+                    foreground = color4,
                     padding = 0,
                     fontsize = 60,
                     width = 23
                     ),
+                widget.Cmus(
+                    play_color=color2,
+                    max_chars=20, background = color4, 
+                    foreground = color2),
+                
                 widget.CPU(
-                    background = negro,
-                    foreground = verde
+                    background = color4,
+                    foreground = color2
                     ),
                 widget.CPUGraph(
-                    background = negro,
-                    foreground = verde
-                    ),
-                widget.Volume(
-                    background = negro,
-                    foreground = verde,
-                    
+                    background = color4,
+
+                    foreground = color3
                     ),
                 widget.TextBox(
                     text = "➤",
-                    background = negro,
-                    foreground = verde,
+                    background = color4,
+                    foreground = color5,
                     padding = 0,
                     fontsize = 60,
                     width = 23
                     ),
-
+                widget.TextBox(
+                    background = color5,
+                    foreground = color4,
+                    text = ""
+                    ),
+                widget.Volume(
+                    background = color5,
+                    foreground = color1,
+                    volume_app = "alsamixer",
+                    volume_down_command = "-",
+                    volume_up_command = "+",
+                    ),
+                                widget.TextBox(
+                    text = "➤",
+                    background = color5,
+                    foreground = color4,
+                    padding = 0,
+                    fontsize = 60,
+                    width = 23
+                    ),
                 widget.Net(
-                    background = verde,
-                    foreground = negro,
+                    background = color4,
+                    foreground = color2,
+                    interface='wlp4s0',
+                    format = '  : {down} ↓↑ {up}',
                     fontsize = 9),
                 widget.TextBox(
                     text = "➤",
-                    background = verde,
-                    foreground = negro,
+                    background = color4,
+                    foreground = color5,
                     padding = 0,
                     fontsize = 60,
                     width = 23
                     ),
-
-                widget.Clock(timezone=timezone("America/Bogota"),format='%Y-%m-%d %a %I:%M %p', foreground = verde, background = negro ),
+                widget.Battery(
+                        background = color5,
+                        foreground  = color1,
+                        charge_char = '',
+                        discharge_char = '',
+                        empty_char = '',
+                        full_char = '',
+                        show_short_text = False,
+                        format = '{char} {percent:2.0%}'
+                        ),
                 widget.TextBox(
                     text = "➤",
-                    background = negro,
-                    foreground = verde,
+                    background = color5,
+                    foreground = color4,
+                    padding = 0,
+                    fontsize = 60,
+                    width = 23
+                    ),
+                widget.TextBox(
+                    text = "",
+                    background = color4,
+                    foreground = color2,
+                    fontsize = 14
+                        ),
+                widget.Clock(timezone=timezone('UTC'),format='%Y-%m-%d %a %I:%M %p', foreground = color2, background = color4 ),
+                widget.TextBox(
+                    text = "➤",
+                    background = color4,
+                    foreground = color5,
                     padding = 0,
                     fontsize = 60,
                     width = 23
                     ),
                 widget.CurrentLayout(
-                    background = verde,
-                    foreground = negro,
+                    background = color5,
+                    foreground = color1,
                     markup = False,
                     padding = 2
                     ),
 
                 widget.TextBox(
                     text = "➤",
-                    background = verde,
-                    foreground = negro,
+                    background = color5,
+                    foreground = color1,
                     padding = 0,
                     fontsize = 60,
                     width = 23
                     ),
 
-                widget.QuickExit(foreground = verde, background = negro),
-                widget.Cmus(
-                    play_color="#000000",
-                    max_chars=20, background = verde, 
-                    foreground = negro),
+                widget.QuickExit(default_text = "",foreground = color2, background = color1, fontsize = 14),
                 ],
 
             20,
-            background=negro,
+            background=color4,
             
             
         ),
