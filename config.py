@@ -53,6 +53,7 @@ keys = [
     Key([mod], "space", lazy.layout.next(),
         desc="Move window focus to other window"),
     Key([mod], "b", lazy.spawn(browser), desc="Launch browser"),
+    Key([mod, "control"], "s", lazy.spawn("flameshot gui"), desc="tomar screenshot"),
 
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
@@ -74,6 +75,7 @@ keys = [
         desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    Key([mod, "control"], "o", lazy.spawn("libreoffice"), desc = "Abrir libreoffice"),
 
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
@@ -111,24 +113,22 @@ for i in groups:
     ])
 
 layouts = [
-    layout.Columns(border_focus_stack=['#d75f5f', '#8f3d3d'], border_width=4),
+    # layout.Columns(border_focus_stack=['#d75f5f', '#8f3d3d'], border_width=4),
     # layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
     layout.MonadTall(
-        border_width=2,
-        border_normal="gray",
-        margin=0,
-        border_focus="green",
+        border_width=1,
+        margin=1,
         ),
     # layout.MonadWide(),
     # layout.RatioTile(),
-     layout.Tile(border_normal="gray",
-         border_focus = "green",
-         margin=0,
-     border_width=2),
+    #layout.Tile(border_normal="gray",
+    #      border_focus = "green",
+    #     margin=0,
+    # border_width=2),
     # layout.TreeTab(),
     # layout.VerticalTile(),
     # layout.Zoomy(),
@@ -157,7 +157,7 @@ screens = [
                     text = "➤",
                     background = color4,
                     foreground = color5,
-                    padding = 0,
+                    padding = 3,
                     fontsize = 60,
                     width = 23
                     ),
@@ -169,7 +169,7 @@ screens = [
                     text = "➤",
                     background = color5,
                     foreground = color4,
-                    padding = 0,
+                    padding = 3,
                     fontsize = 60,
                     width = 23
                     ),
@@ -191,14 +191,14 @@ screens = [
                     text = "➤",
                     background = color4,
                     foreground = color5,
-                    padding = 0,
+                    padding = 3,
                     fontsize = 60,
                     width = 23
                     ),
                 widget.TextBox(
                     background = color5,
                     foreground = color4,
-                    text = ""
+                    text = " "
                     ),
                 widget.Volume(
                     background = color5,
@@ -207,11 +207,11 @@ screens = [
                     volume_down_command = "-",
                     volume_up_command = "+",
                     ),
-                                widget.TextBox(
+                widget.TextBox(
                     text = "➤",
                     background = color5,
                     foreground = color4,
-                    padding = 0,
+                    padding = 3,
                     fontsize = 60,
                     width = 23
                     ),
@@ -225,14 +225,14 @@ screens = [
                     text = "➤",
                     background = color4,
                     foreground = color5,
-                    padding = 0,
+                    padding = 3,
                     fontsize = 60,
                     width = 23
                     ),
                 widget.Battery(
                         background = color5,
                         foreground  = color1,
-                        charge_char = '',
+                        charge_char = ' ',
                         discharge_char = '',
                         empty_char = '',
                         full_char = '',
@@ -243,7 +243,7 @@ screens = [
                     text = "➤",
                     background = color5,
                     foreground = color4,
-                    padding = 0,
+                    padding = 3,
                     fontsize = 60,
                     width = 23
                     ),
@@ -253,16 +253,16 @@ screens = [
                     foreground = color2,
                     fontsize = 14
                         ),
-                widget.Clock(timezone=timezone('UTC'),format='%Y-%m-%d %a %I:%M %p', foreground = color2, background = color4 ),
+                widget.Clock(timezone=timezone('America/Bogota'),format='%Y-%m-%d %a %I:%M %p', foreground = color2, background = color4 ),
                 widget.TextBox(
                     text = "➤",
                     background = color4,
                     foreground = color5,
-                    padding = 0,
+                    padding = 3,
                     fontsize = 60,
                     width = 23
                     ),
-                widget.CurrentLayout(
+                widget.Prompt(
                     background = color5,
                     foreground = color1,
                     markup = False,
@@ -273,7 +273,7 @@ screens = [
                     text = "➤",
                     background = color5,
                     foreground = color1,
-                    padding = 0,
+                    padding = 3,
                     fontsize = 60,
                     width = 23
                     ),
@@ -281,7 +281,7 @@ screens = [
                 widget.QuickExit(default_text = "",foreground = color2, background = color1, fontsize = 14),
                 ],
 
-            20,
+            21,
             background=color4,
             
             
@@ -336,6 +336,7 @@ autostart = [
         "feh --bg-fill /home/leal/Descargas/one-piece.jpg",
         "picom --no-vsync &",
         "nm-applet &",
+        "/home/leal/Discord/./Discord &"
         ]
 
 for i in autostart:
